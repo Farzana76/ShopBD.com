@@ -21,22 +21,60 @@
     <!-- Cart -->
     <div id="cart"> <a href="view_cart.aspx" class="cart-link">Your Shopping Cart</a>
       <div class="cl">&nbsp;</div>
-      <span>Articles: <strong></strong></span> &nbsp;&nbsp; <span>Cost: <strong></strong></span> </div>
+      <span>Items: <asp:Label ID="item" runat="server" Text="0"></asp:Label></span> &nbsp;&nbsp; <span>Cost: BDT <asp:Label ID="cost" runat="server" Text="0"></asp:Label></span> </div>
     <!-- End Cart -->
     <!-- Navigation -->
     <div id="navigation">
       <ul>
         <li><a href="home.aspx">Home</a></li>
         <li><a href="display.aspx">Product</a></li>
-        <li><a href="#">My Account</a></li>
+       
         <li><a href="../default.aspx">Compare</a></li>
         <li><a href="feedback.aspx">Feedback</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="registration.aspx">Sign Up</a></li>
+
+        <%
+            if (Session["user"] == null)
+            {
+               %>
+                <li><a href="userlogin.aspx">Login</a></li>
+               
+               <%
+
+            }
+            else
+            { 
+                %>
+                 <li><a href="userlogout.aspx">Logout</a></li>
+                
+                <%
+            
+            }
+            
+            
+            
+            
+            
+             %>
+       
 
       </ul>
     </div>
     <!-- End Navigation -->
   </div>
+   <div class="box search">
+        <h2>Search by <span></span></h2>
+        <div class="box-content">
+          <table align="center">
+          <tr>
+     <td align="center"><asp:Label ID="l2" runat="server" Text="Product Name" ForeColor="Maroon" Font-Size="14px"></asp:Label></td>
+     <td align="center"><input type="text" class="field" id="searchtextbox" /></td>
+     <td align="center"><input type="button" class="search-submit" value="Search" onclick="search();"/></td>
+     </tr></table>
+               
+         
+        </div>
+      </div>
   <!-- End Header -->
   <!-- Main -->
   <div id="main">
@@ -77,19 +115,7 @@
     <!-- Sidebar -->
     <div id="sidebar">
       <!-- Search -->
-      <div class="box search">
-        <h2>Search by <span></span></h2>
-        <div class="box-content">
-          
-            <br/>
-            <label>Product Name</label>
-            <input type="text" class="field" id="searchtextbox" />
-
-            <input type="button" class="search-submit" value="Search" onclick="search();" />
-            <p> please enter item name inside the textbox</p>
-         
-        </div>
-      </div>
+     
       <!-- End Search -->
       <!-- Categories -->
       <div class="box categories">
@@ -97,7 +123,7 @@
         <div class="box-content">
           <ul>
             
-           <asp:DataList ID="dd" runat="server">
+           <asp:DataList ID="dd" runat="server" Height="206px" Width="255px">
            <ItemTemplate>
               <li><a href="display.aspx?category=<%#Eval("category") %>"><%#Eval("category") %></a></li>
            </ItemTemplate>
@@ -153,7 +179,7 @@
   <!-- Footer -->
   <div id="footer">
     <p class="left"> <a href="home.aspx">Home</a> <span>|</span> <a href="display.aspx">Product</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="../default.aspx">Compare</a> <span>|</span> <a href="feedback.aspx">Feedback</a><span>|</span> <a href="#">Contact</a> </p>
-    <p class="right"> &copy; 2018 ShopBD.com. Design by <a href="#">Sk & Mou</a> </p>
+    <p class="right"> &copy; 2018 ShopBD.com. Design by <a href="#">Sk,Mou & Neaz</a> </p>
   </div>
   <!-- End Footer -->
 </div>

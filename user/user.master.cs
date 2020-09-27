@@ -10,7 +10,12 @@ using MySql.Data.MySqlClient;
 
 public partial class user_user : System.Web.UI.MasterPage
 {
-    
+    string s;
+    string t;
+    string[] a = new string[6];
+    int tot = 0;
+    int totcount = 0;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!this.IsPostBack)
@@ -33,6 +38,33 @@ public partial class user_user : System.Web.UI.MasterPage
                 }
             }
         }
+
+        if (Request.Cookies["aa"] != null)
+        {
+            s = Convert.ToString(Request.Cookies["aa"].Value);
+
+            string[] strArr = s.Split('|');
+
+            for (int i = 0; i < strArr.Length; i++)
+            {
+                t = Convert.ToString(strArr[i].ToString());
+                string[] strArr1 = t.Split(',');
+
+                for (int j = 0; j < strArr1.Length; j++)
+                {
+                    a[j] = strArr1[j].ToString();
+                }
+
+               
+                tot = tot + (Convert.ToInt32(a[1].ToString()) * Convert.ToInt32(a[2].ToString()));
+                totcount = totcount + 1;
+
+                cost.Text = tot.ToString();
+                item.Text = totcount.ToString();
+            }
+        }
+
+        
             
     }
 }

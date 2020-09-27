@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="delete_cart.aspx.cs" Inherits="user_delete_cart" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="userlogout.aspx.cs" Inherits="user_userlogout" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

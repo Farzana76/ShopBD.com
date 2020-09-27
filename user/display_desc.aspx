@@ -19,7 +19,7 @@
 
 </div>
 
-<div style="height:300px; width:397px; float:left; border-style:solid; border-width:1px; font-family:Algerian; font-size:medium;">
+<div style="height:300px; width:397px; float:left; border-style:solid; border-width:1px; font-family:Calibri Light; font-size:medium; font-weight:bold; color:Black;">
 Product Name:<br /> <%#Eval("p_name")%><br /><br />
 Price:<br />BDT <%#Eval("p_price")%><br /><br />
 Available:<br /><%#Eval("p_quantity")%><br /><br />
@@ -39,17 +39,21 @@ Description:<br /><%#Eval("p_description")%><br /><br />
 <br />
 <table>
 <tr>
-<td><asp:Label ID="l2" runat="server" Text="Enter Quantity"></asp:Label></td>
+<td><asp:Label ID="l2" runat="server" Text="Enter Quantity" ForeColor="Black" Font-Size="Small"></asp:Label></td>
 <td><asp:TextBox ID="t1" runat="server"></asp:TextBox></td>
-<td><asp:Button ID="b1" runat="server" Text="Add to Cart" OnClick="b1_Click" /></td>
+<td><asp:Button ID="b1" runat="server" Text="Add to Cart" OnClick="b1_Click" BackColor="#5B0000" ForeColor="White" Font-Size="Medium" /></td>
 </tr>
 <tr>
 <td colspan="3">
-<asp:Label ID="l1" runat="server" Text="" ForeColor="Red"></asp:Label>
+<asp:Label ID="l1" runat="server" Text="" ForeColor="Red" Font-Bold="True" Font-Size="Medium"></asp:Label>
 </td>
 </tr>
 </table>
-
+<br />
+<br />
+<br />
+<br />
+<br />
 
 
 </asp:Content>

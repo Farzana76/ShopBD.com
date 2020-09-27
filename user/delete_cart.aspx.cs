@@ -15,15 +15,19 @@ public partial class user_delete_cart : System.Web.UI.Page
     int id;
     string p_name, p_description, p_price, p_quantity, p_image;
     int count = 0;
+    //int p_id, qty;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+       // string mainconn = ConfigurationManager.ConnectionStrings["test"].ConnectionString;
+        //MySqlConnection sqlconn = new MySqlConnection(mainconn);
+
         id = Convert.ToInt32(Request.QueryString["id"].ToString());
 
         DataTable dt = new DataTable();
         dt.Rows.Clear();
 
-        dt.Columns.AddRange(new DataColumn[6] { new DataColumn("p_name"), new DataColumn("p_price"), new DataColumn("p_quantity"), new DataColumn("p_description"), new DataColumn("p_image"), new DataColumn("id") });
+        dt.Columns.AddRange(new DataColumn[6] { new DataColumn("p_name"), new DataColumn("p_price"), new DataColumn("p_quantity"), new DataColumn("p_description"), new DataColumn("p_image"), new DataColumn("id")});
 
         if (Request.Cookies["aa"] != null)
         {
@@ -47,6 +51,30 @@ public partial class user_delete_cart : System.Web.UI.Page
             }
         }
 
+
+      /*  count = 0;
+        foreach (DataRow dr in dt.Rows)
+        {
+            if (count == id)
+            {
+                p_id = Convert.ToInt32(dr["p_id"].ToString());
+                qty = Convert.ToInt32(dr["p_quantity"].ToString());
+            
+            }
+
+            count = count + 1;
+        
+        }
+
+        count = 0;
+
+        sqlconn.Open();
+        MySqlCommand cmd1 = sqlconn.CreateCommand();
+        cmd1.CommandType = CommandType.Text;
+        cmd1.CommandText = "UPDATE `product` SET `p_quantity` = `p_quantity`+" + qty + " WHERE `product`.`id` =" + p_id;
+        cmd1.ExecuteNonQuery();
+        sqlconn.Close();*/
+
         dt.Rows.RemoveAt(id);
 
         Response.Cookies["aa"].Expires = DateTime.Now.AddDays(-1);
@@ -59,6 +87,7 @@ public partial class user_delete_cart : System.Web.UI.Page
             p_quantity = dr["p_quantity"].ToString();
             p_description = dr["p_description"].ToString();
             p_image = dr["p_image"].ToString();
+           // p_id = Convert.ToInt32(dr["p_id"].ToString());
 
             count = count + 1;
 

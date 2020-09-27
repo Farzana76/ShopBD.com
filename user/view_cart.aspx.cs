@@ -16,7 +16,7 @@ public partial class user_view_cart : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+       
 
         DataTable dt = new DataTable();
         dt.Columns.AddRange(new DataColumn[6] { new DataColumn("p_name"), new DataColumn("p_price"), new DataColumn("p_quantity"), new DataColumn("p_description"), new DataColumn("p_image"), new DataColumn("id") });
@@ -47,13 +47,14 @@ public partial class user_view_cart : System.Web.UI.Page
         d1.DataSource = dt;
         d1.DataBind();
 
-        l1.Text = "Net amount: " + tot.ToString();
+        l1.Text = "Net amount: "+tot.ToString();
     }
 
 
 
     protected void b1_Click(object sender, EventArgs e)
     {
+        Session["checkoutbutton"] = "yes";
         Response.Redirect("checkout.aspx");
     }
 }

@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/user/user.master" AutoEventWireup="true" CodeFile="view_cart.aspx.cs" Inherits="user_view_cart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="c1" Runat="Server">
+<div style="padding-top:5px; height:25px; width:720px; border-style:solid; border-width:1px; background:url(css/images/l1.jpg); color:White; font-size:25px; text-align:center;">
+<label>View Cart</label>
+</div>
+<br />
+<br />
+<br />
     <div>
     <asp:DataList ID="d1" runat="server" BorderColor="Maroon" BorderStyle="Solid" 
             BorderWidth="1px">

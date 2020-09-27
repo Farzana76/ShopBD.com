@@ -10,7 +10,7 @@ using MySql.Data.MySqlClient;
 public partial class user_display_desc : System.Web.UI.Page
 {
     static string mainconn = ConfigurationManager.ConnectionStrings["test"].ConnectionString;
-    MySqlConnection sqlconn = new MySqlConnection(mainconn);
+    MySqlConnection sqlconn = new MySqlConnection(mainconn); 
     int id;
     int qty;
     string p_name, p_description, p_price, p_quantity, p_image;
@@ -26,7 +26,7 @@ public partial class user_display_desc : System.Web.UI.Page
             id = Convert.ToInt32(Request.QueryString["id"].ToString());
             string mainconn = ConfigurationManager.ConnectionStrings["test"].ConnectionString;
             MySqlConnection sqlconn = new MySqlConnection(mainconn);
-            MySqlCommand comm = new MySqlCommand("select * from product where id=" + id + "");
+            MySqlCommand comm = new MySqlCommand("select * from product where id="+id+"");
             {
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 comm.Connection = sqlconn;
@@ -49,7 +49,7 @@ public partial class user_display_desc : System.Web.UI.Page
             t1.Visible = false;
             b1.Visible = false;
             l1.Text = "OUT of STOCK";
-
+        
         }
     }
     protected void b1_Click(object sender, EventArgs e)
@@ -70,8 +70,8 @@ public partial class user_display_desc : System.Web.UI.Page
             DataTable dt = new DataTable();
             {
                 da.Fill(dt);
-                // d1.DataSource = dt;
-                // d1.DataBind();
+               // d1.DataSource = dt;
+               // d1.DataBind();
                 foreach (DataRow dr in dt.Rows)
                 {
                     p_name = dr["p_name"].ToString();
@@ -79,12 +79,12 @@ public partial class user_display_desc : System.Web.UI.Page
                     p_quantity = dr["p_quantity"].ToString();
                     p_description = dr["p_description"].ToString();
                     p_image = dr["p_image"].ToString();
-
+                    
                 }
-
+                
 
             }
-
+           
         }
 
         if (Convert.ToInt32(t1.Text) > Convert.ToInt32(p_quantity))
@@ -113,9 +113,9 @@ public partial class user_display_desc : System.Web.UI.Page
 
             MySqlCommand cmd1 = sqlconn.CreateCommand();
             cmd1.CommandType = CommandType.Text;
-            cmd1.CommandText = "UPDATE `product` SET `p_quantity` = `p_quantity`-" + t1.Text + " WHERE `product`.`id` =" + id;
+            cmd1.CommandText = "UPDATE `product` SET `p_quantity` = `p_quantity`-"+t1.Text+" WHERE `product`.`id` ="+id;
             cmd1.ExecuteNonQuery();
-            Response.Redirect("display_desc.aspx?id=" + id.ToString());
+            Response.Redirect("display_desc.aspx?id="+id.ToString());
 
 
         }
@@ -127,7 +127,7 @@ public partial class user_display_desc : System.Web.UI.Page
         sqlconn.Open();
         MySqlCommand cmd = sqlconn.CreateCommand();
         cmd.CommandType = CommandType.Text;
-        cmd.CommandText = "select * from product where id=" + id + "";
+        cmd.CommandText = "select * from product where id="+id+"";
         cmd.ExecuteNonQuery();
         DataTable dt = new DataTable();
         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -136,10 +136,10 @@ public partial class user_display_desc : System.Web.UI.Page
         foreach (DataRow dr in dt.Rows)
         {
             qty = Convert.ToInt32(dr["p_quantity"].ToString());
-
+        
         }
-        return qty;
-
-
+        return qty;    
+    
+    
     }
 }
